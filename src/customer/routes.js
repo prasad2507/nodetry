@@ -1,10 +1,6 @@
-const { Router } = require("express");
+import { Router } from "express";
 const router = Router();
-const {
-  createNewCustomer,
-  getCustomerById,
-  getCustomers
-} = require("./controller");
+import { createNewCustomer, getCustomerById, getCustomers } from "./controller";
 
 router.post("/", (req, res) => {
   createNewCustomer(req.body)
@@ -37,4 +33,4 @@ router.get("/:id", (req, res) => {
     });
 });
 
-module.exports = router;
+export default router;

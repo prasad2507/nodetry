@@ -1,7 +1,7 @@
-const Transaction = require("../models/transaction");
-const { updateBalance } = require("../account/controller");
+import Transaction, { findById, find } from "../models/transaction";
+import { updateBalance } from "../account/controller";
 
-const createNewTransaction = async transaction => {
+export const createNewTransaction = async transaction => {
   const newTransaction = new Transaction(transaction);
   let createdTransaction = await newTransaction.save();
   if (transaction.type == "debit") {
@@ -12,20 +12,15 @@ const createNewTransaction = async transaction => {
   return createdTransaction.populate("account").execPopulate();
 };
 
-const getTransactionById = id => {
-  return Transaction.findById(id).populate("account", {
+export const getTransactionById = id => {
+  return findById(id).populate("account", {
     accountNumber: 1
   });
 };
 
-const getTransactions = () => {
-  return Transaction.find().populate("account", {
+export const getTransactions = () => {
+  return find().populate("account", {
     accountNumber: 1
   });
 };
 
-module.exports = {
-  createNewTransaction: createNewTransaction,
-  getTransactionById: getTransactionById,
-  getTransactions: getTransactions
-};

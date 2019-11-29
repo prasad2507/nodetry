@@ -1,4 +1,4 @@
-const Account = require("../models/account");
+const Account = require("../models/account").default;
 
 const createNewAccount = async account => {
   const newAccount = new Account(account);
