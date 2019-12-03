@@ -1,4 +1,5 @@
 import { model, Schema } from "mongoose";
+import { composeWithMongoose } from "graphql-compose-mongoose";
 
 const customerSchema = Schema({
   name: {
@@ -11,6 +12,7 @@ const customerSchema = Schema({
   }
 });
 
-const customerModel = model("customer", customerSchema);
+const CustomerModel = model("customer", customerSchema);
+export default CustomerModel;
 
-export default customerModel;
+export const CustomerTC=composeWithMongoose(CustomerModel);

@@ -1,4 +1,5 @@
 import { model, Schema } from "mongoose";
+import {composeWithMongoose} from "graphql-compose-mongoose";
 
 const accountSchema = Schema({
   type: {
@@ -10,7 +11,7 @@ const accountSchema = Schema({
     type: Number,
     required: true
   },
-  accountNumber: {
+  accountnumber: {
     type: String,
     required: true
   },
@@ -23,4 +24,6 @@ const accountSchema = Schema({
 
 const accountModel = model("account", accountSchema);
 
-export default accountModel;
+export default accountModel ;
+
+export const AccountTC=composeWithMongoose(accountModel);
