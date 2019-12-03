@@ -1,20 +1,20 @@
-const Account = require("../models/account").default;
+import Account from "../models/account";
 
-const createNewAccount = async account => {
+export const createNewAccount = async account => {
   const newAccount = new Account(account);
   let createdAccount = await newAccount.save();
   return createdAccount.populate("customer").execPopulate();
 };
 
-const getAccountById = id => {
+export const getAccountById = id => {
   return Account.findById(id).populate("customer");
 };
 
-const getAccounts = () => {
+export const getAccounts = () => {
   return Account.find().populate("customer");
 };
 
-const updateBalance = (id, amount) => {
+export const updateBalance = (id, amount) => {
   return Account.findByIdAndUpdate(id, {
     $inc: {
       balance: amount
@@ -22,9 +22,4 @@ const updateBalance = (id, amount) => {
   });
 };
 
-module.exports = {
-  createNewAccount: createNewAccount,
-  getAccountById: getAccountById,
-  getAccounts: getAccounts,
-  updateBalance: updateBalance
-};
+

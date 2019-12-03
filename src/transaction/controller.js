@@ -13,13 +13,13 @@ export const createNewTransaction = async transaction => {
 };
 
 export const getTransactionById = id => {
-  return findById(id).populate("account", {
+  return Transaction.findById(id).populate("account", {
     accountNumber: 1
   });
 };
 
 export const getTransactions = () => {
-  return find().populate("account", {
+  return Transaction.find().populate("account", {
     accountNumber: 1
   });
 };

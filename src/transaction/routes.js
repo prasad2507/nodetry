@@ -1,7 +1,6 @@
 import { Router } from "express";
-const router = Router();
 import { createNewTransaction, getTransactionById, getTransactions } from "./controller";
-
+const router = Router();
 router.post("/", (req, res) => {
   createNewTransaction(req.body)
     .then(transaction => {

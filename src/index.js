@@ -1,14 +1,10 @@
 import express from "express";
 import { json, urlencoded } from "body-parser";
-
 import { connect } from "mongoose";
-
-const app = express();
-
 import customerRouter from "./customer/routes";
 import accountRouter from "./account/routes";
 import transactionRouter from "./transaction/routes";
-
+const app = express();
 app.use(json());
 
 app.use(

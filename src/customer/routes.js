@@ -1,7 +1,7 @@
 import { Router } from "express";
-const router = Router();
-import { createNewCustomer, getCustomerById, getCustomers } from "./controller";
 
+import { createNewCustomer, getCustomerById, getCustomers } from "./controller";
+const router = Router();
 router.post("/", (req, res) => {
   createNewCustomer(req.body)
     .then(customer => {

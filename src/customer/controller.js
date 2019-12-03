@@ -6,9 +6,9 @@ export const createNewCustomer = customer => {
 };
 
 export const getCustomerById = id => {
-  return findById(id);
+  return Customer.findById(id);
 };
 
 export const getCustomers = () => {
-  return find();
+  return Customer.find();
 };

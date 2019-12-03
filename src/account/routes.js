@@ -1,7 +1,7 @@
 import { Router } from "express";
-const router = Router();
-import { createNewAccount, getAccountById, getAccounts } from "./controller";
 
+import { createNewAccount, getAccountById, getAccounts } from "./controller";
+const router = Router();
 router.post("/", (req, res) => {
   createNewAccount(req.body)
     .then(account => {
